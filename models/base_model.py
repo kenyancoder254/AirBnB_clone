@@ -11,7 +11,7 @@ class BaseModel:
         initializes public attributes with values
         """
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.utcnow().isoformat()
+        self.created_at = datetime.now().isoformat()
         self.updated_at = self.created_at
 
     def __str__(self):
@@ -20,12 +20,12 @@ class BaseModel:
 
     def save(self):
         """updates the current time"""
-        self.updated_at = datetime.utcnow().isoformat()
+        self.updated_at = datetime.now().isoformat()
 
     def to_dict(self):
         """Dictionary rep of the classs"""
         data = self.__dict__.copy()
         data["__class__"] = self.__class__.__name__
-        data["created_at"] = data["created_at"] + "Z"
-        data["updated_at"] = data["updated_at"] + "Z"
+        data["created_at"] = data["created_at"]
+        data["updated_at"] = data["updated_at"]
         return data
