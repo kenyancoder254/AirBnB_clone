@@ -21,6 +21,7 @@ class BaseModel:
     def save(self):
         """updates current time"""
         self.updated_at = datetime.utcnow()
+        return self.updated_at
 
     def to_dict(self):
         """Dictionary rep of the class"""
